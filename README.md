@@ -2,7 +2,7 @@
 
 Online payment gateway libraries in php sample code in curl request.
 
-## aaamrPay 2 ##
+## aaamrPay ##
 
 [aamarPay](https://aamarpay.com/ "aamarPay") is an Online Payment Gateway & Merchant Service Provider of Bangladesh. Aiming to provide best payment experience that an estore or customer can expect from a payment processor company.
 
