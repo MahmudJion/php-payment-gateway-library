@@ -1,55 +1,37 @@
 <?php
-//Generate Merchant Unique Transaction ID
-function rand_string($length)
-{
-    $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    $str = '';
-    $size = strlen($chars);
-    for ($i = 0; $i < $length; $i++) {
-        $str .= $chars[rand(0, $size - 1)];
-    }
-    return $str;
-}
+$url = "https://sandbox.sslcommerz.com/gwprocess/v4/api.php";
 
-$cur_random_value = rand_string(10);
-
-$url = "http://sandbox.aamarpay.com/request.php";
 $fields = array(
-    'store_id' => 'aamarpay_id',
-    'amount' => '10',
-    'payment_type' => 'VISA',
+    'store_id' => 'testbox',
+    'store_passwd' => 'qwerty',
+    'total_amount' => 100,
     'currency' => 'BDT',
-    'tran_id' => $cur_random_value,
-    'cus_name' => 'Mr. ABC',
-    'cus_email' => 'abc@abc.com',
-    'cus_add1' => 'House 1 Road 2',
-    'cus_add2' => 'Uttara',
+    'tran_id' => '1234',
+    'success_url' => 'http://yoursite.com/success.php',
+    'fail_url' => 'http://yoursite.com/fail.php',
+    'cancel_url' => 'http://yoursite.com/cancel.php',
+    'emi_option' => 0,
+    'cus_name' => 'Customer Name',
+    'cus_email' => 'cust@yahoo.com',
+    'cus_phone' => '01700000000',
+    'cus_add1' => 'Dhaka',
     'cus_city' => 'Dhaka',
-    'cus_state' => 'Dhaka',
-    'cus_postcode' => '1000',
     'cus_country' => 'Bangladesh',
-    'cus_phone' => '011111111',
-    'cus_fax' => 'Not-Applicable',
-    'ship_name' => 'Mr. XYZ',
-    'ship_add1' => 'House 1 Road 2',
-    'ship_add2' => 'Uttara',
+    'multi_card_name' => 'mastercard',
+    'product_name' => 'Test',
+    'product_category' => 'Test Category',
+    'product_profile' => 'general',
+    'shipping_method' => 'NO',
+    'ship_name' => 'Customer Name',
+    'ship_add1' => 'Dhaka',
     'ship_city' => 'Dhaka',
-    'ship_state' => 'Dhaka',
-    'ship_postcode' => '1000',
     'ship_country' => 'Bangladesh',
-    'desc' => 'T-Shirt',
-    'success_url' => 'http://www.abc.com/payment_success_page.php',
-    'fail_url' => 'http://www.abc.com/payment_fail_page.php',
-    'cancel_url' => 'http://www.abc.com/payment_fail_page.php',
-    'opt_a' => 'Optional Value A',
-    'opt_b' => 'Optional Value B',
-    'opt_c' => 'Optional Value C',
-    'opt_d' => 'Optional Value D',
-    'signature_key' => 'aamarpay_signature_key'
-
-
 );
+
+// echo "<pre>";
+// print_r($fields);
+// exit();
 
 $domain = $_SERVER["SERVER_NAME"]; // or Manually put your domain name
 $ip = $_SERVER["SERVER_ADDR"];
@@ -75,6 +57,8 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $server_output = curl_exec($ch);
+$gatewayPageUrl = json_decode($server_output)->GatewayPageURL;
+
 $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 $errors = curl_error($ch);
 
@@ -85,10 +69,10 @@ curl_close($ch);
 
 if ($code == 200 && !$errors) {
     if ($url_forward) {
-        $redirect_url_final = "http://sandbox.aamarpay.com" . $url_forward;
-        echo $redirect_url_final;
+        $gatewayPageUrl;
+        echo $gatewayPageUrl;
         die();
-        processRequest($redirect_url_final);
+        processRequest($gatewayPageUrl);
     } else {
         $msg = "Invalid Credential";
         $obj = new \stdClass;
@@ -116,7 +100,7 @@ function processRequest($url)
                     </head>
                             <body onLoad="closethisasap();">
 
-                             <div style="text-align:center;margin:20% 20% 20%;border:2px solid blue;"><h2>Please wait we are redirecting you to Aamarpay ....</h2></div>
+                             <div style="text-align:center;margin:20% 20% 20%;border:2px solid blue;"><h2>Please wait we are redirecting you to sslcommerz ....</h2></div>
 
                     <form name="redirectpost" method="post" action="' . $url . '"></form>
                             </body>
@@ -124,4 +108,3 @@ function processRequest($url)
 
     echo $htmlData;
 }
-
