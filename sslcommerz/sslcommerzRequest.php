@@ -29,10 +29,6 @@ $fields = array(
     'ship_country' => 'Bangladesh',
 );
 
-// echo "<pre>";
-// print_r($fields);
-// exit();
-
 $domain = $_SERVER["SERVER_NAME"]; // or Manually put your domain name
 $ip = $_SERVER["SERVER_ADDR"];
 
