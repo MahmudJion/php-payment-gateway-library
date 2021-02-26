@@ -1,6 +1,8 @@
 <?php
 
 $url = "https://api-sandbox.portwallet.com/payment/v2/invoice";
+$app_key = 'app_key_here';
+$app_secret_key = 'app_secret_key_here';
 
 $orderArray = array(
     'amount' => 100,
@@ -55,12 +57,9 @@ $configArray['billing'] = $billingArray;
 $configArray['shipping'] = $shippingArray;
 
 $headers = array(
-    'authorization:Bearer ' . base64_encode('4eccd54c2b5b826f1f27752ffdaaad8b' . ":" . md5('4b5b7386e6e53e8361020fd78b50a3ee' . time())),
+    'authorization:Bearer ' . base64_encode($app_key . ":" . md5($app_secret_key. time())),
     'Content-Type: application/json'
 );
-
-$domain = $_SERVER["SERVER_NAME"]; // or Manually put your domain name
-$ip = $_SERVER["SERVER_ADDR"];
 
 //open connection
 $ch = curl_init($url);
