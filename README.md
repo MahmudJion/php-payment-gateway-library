@@ -26,3 +26,19 @@ More than 70% of the population of Bangladesh lives in rural areas where access 
 In 2017, bKash was ranked as the 23rd company in the annual list of Fortune Magazine's 'Change the World in 2017' among the top 50 companies to make changes based on social issues.
 
 bKash online payment solution documents: https://developer.bka.sh/
+
+## portWallet ##
+
+[PortWallet](https://www.portwallet.com/en_US/index.html "PortWallet") is a payment gateway that allows merchants to expand their businesses online. Your customers will be able to buy products online with ease and security. Payments can be made with local and international debit or credit cards.
+
+Economic infrastructure for the internet
+PortWallet is the best and simplest way to accept payments online in Bangladesh. PortWallet aims to expand the infrastructure of internet commerce by making it easy to process transactions and manage an online business.
+
+Code
+PortWallet is built for developers,creators and customers. PortWallet maintains international standards for safety and has the best user experience with the fewest steps to complete a transaction. PortWallet is the first payment gateway in Bangladesh to offer an API for easy connectivity for merchants. PortWallet is also designed so merchants are able to leverage new features without any modification to the existing code. These two unique features allows merchants a reliable and cost effective solution for payment gateway connectivity.
+
+Backstory
+PortWallet started it's journey with a mission to enhance and shape the e-commerce industry in Bangladesh through better user experience for merchants and end users.
+
+Company
+PortWallet was developed by Portonics Limited. Portonics is an technology consultancy firm based in Dhaka, Bangladesh. We specialize in web and software development, mobile applications and digital marketing. Learn more at https://www.portonics.com/
