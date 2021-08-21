@@ -40,14 +40,12 @@ if ($err || $transaction_status == "4001") {
 }
 else
 {
-// Assign Transaction Information
-
+    // Assign Transaction Information
     $transaction_amount = $api_response['transaction']['amount']; // bKash Payment Amount
     $transaction_reference = $api_response['transaction']['reference']; // bKash Reference for Invoice ID
     $transaction_time = $api_response['transaction']['trxTimestamp']; // bKash Transaction Time & Date
 
-// Print Transaction Information
-
+    // Print Transaction Information
     echo $transaction_status."<br>".$transaction_amount."<br>".$transaction_reference."<br>".$transaction_time;
 }
 ?>
