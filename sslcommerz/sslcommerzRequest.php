@@ -47,7 +47,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array("REMOTE_ADDR: $ip", "HTTP_X_FORWARDED
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_REFERER, $domain);
-//curl_setopt($ch, CURLOPT_INTERFACE, $ip);
+curl_setopt($ch, CURLOPT_INTERFACE, $ip);
 curl_setopt($ch, CURLOPT_POST, count($fields));
 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
