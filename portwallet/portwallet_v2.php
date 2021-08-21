@@ -1,8 +1,8 @@
 <?php
 
 $url = "https://api-sandbox.portwallet.com/payment/v2/invoice";
-$app_key = 'app_key_here';
-$app_secret_key = 'app_secret_key_here';
+$app_key = 'APP_KEY_HERE';
+$app_secret_key = 'APP_SECRET_KEY_HERE';
 
 $orderArray = array(
     'amount' => 100,
@@ -10,12 +10,10 @@ $orderArray = array(
     'redirect_url' => 'http://www.yourDomainUrl.com',
     'ipn_url' => 'http://www.yourDomainUrl.com/ipn_url',
 );
-
 $productArray = array(
     'name' => 'test product',
     'description' => 'test description',
 );
-
 $billingArray = array();
 $billingAddressArray = array(
     'street' => '123',
@@ -30,7 +28,6 @@ $billingCustomerArray = array(
     'phone' => '01900000000',
     'address' => $billingAddressArray
 );
-
 $shippingArray = array();
 $shippingAddressArray = array(
     'street' => '123',
@@ -45,7 +42,6 @@ $shippingCustomerArray = array(
     'phone' => '01900000000',
     'address' => $shippingAddressArray
 );
-
 $billingArray['customer'] = $billingCustomerArray;
 $shippingArray['customer'] = $shippingCustomerArray;
 
