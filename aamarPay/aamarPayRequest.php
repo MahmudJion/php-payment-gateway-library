@@ -6,9 +6,11 @@ function rand_string($length)
 
     $str = '';
     $size = strlen($chars);
+
     for ($i = 0; $i < $length; $i++) {
         $str .= $chars[rand(0, $size - 1)];
     }
+
     return $str;
 }
 
@@ -55,6 +57,7 @@ $domain = $_SERVER["SERVER_NAME"]; // or Manually put your domain name
 $ip = $_SERVER["SERVER_ADDR"];
 
 $fields_string = '';
+
 //url-ify the data for the POST
 foreach ($fields as $key => $value) {
     $fields_string .= $key . '=' . $value . '&';
@@ -69,7 +72,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array("REMOTE_ADDR: $ip", "HTTP_X_FORWARDED
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_REFERER, $domain);
-//curl_setopt($ch, CURLOPT_INTERFACE, $ip);
+curl_setopt($ch, CURLOPT_INTERFACE, $ip);
 curl_setopt($ch, CURLOPT_POST, count($fields));
 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
