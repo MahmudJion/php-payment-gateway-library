@@ -63,26 +63,26 @@ $url_forward = json_decode($server_output, true);
 //close connection
 curl_close($ch);
 
-if ($code == 200 && !$errors) {
-    if ($url_forward) {
-        $gatewayPageUrl;
-        echo $gatewayPageUrl;
-        die();
-        processRequest($gatewayPageUrl);
+    if ($code == 200 && !$errors) {
+        if ($url_forward) {
+            $gatewayPageUrl;
+            echo $gatewayPageUrl;
+            die();
+            processRequest($gatewayPageUrl);
+        } else {
+            $msg = "Invalid Credential";
+            $obj = new \stdClass;
+            $obj->error = 'yes';
+            $obj->msg = $this->msg;
+            return $obj;
+        }
     } else {
-        $msg = "Invalid Credential";
+        $msg = "Please provide a valid information about transaction with transaction id, amount, success url, fail url, cancel url, store id at least";
         $obj = new \stdClass;
         $obj->error = 'yes';
-        $obj->msg = $this->msg;
+        $obj->msg = $msg;
         return $obj;
     }
-} else {
-    $msg = "Please provide a valid information about transaction with transaction id, amount, success url, fail url, cancel url, store id at least";
-    $obj = new \stdClass;
-    $obj->error = 'yes';
-    $obj->msg = $msg;
-    return $obj;
-}
 
 function processRequest($url)
 {
