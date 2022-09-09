@@ -35,17 +35,17 @@ curl_close($curl);
 $api_response = json_decode ($response, true);  // Getting Response from bKash API.
 $transaction_status = $api_response['transaction']['trxStatus']; // Transaction Status Codes
 
-if ($err || $transaction_status == "4001") {
-    echo 'Problem for Sending Response to bKash API ! Try Again after fews minutes.';
-}
-else
-{
-    // Assign Transaction Information
-    $transaction_amount = $api_response['transaction']['amount']; // bKash Payment Amount
-    $transaction_reference = $api_response['transaction']['reference']; // bKash Reference for Invoice ID
-    $transaction_time = $api_response['transaction']['trxTimestamp']; // bKash Transaction Time & Date
+    if ($err || $transaction_status == "4001") {
+        echo 'Problem for Sending Response to bKash API ! Try Again after fews minutes.';
+    }
+    else
+    {
+        // Assign Transaction Information
+        $transaction_amount = $api_response['transaction']['amount']; // bKash Payment Amount
+        $transaction_reference = $api_response['transaction']['reference']; // bKash Reference for Invoice ID
+        $transaction_time = $api_response['transaction']['trxTimestamp']; // bKash Transaction Time & Date
 
-    // Print Transaction Information
-    echo $transaction_status."<br>".$transaction_amount."<br>".$transaction_reference."<br>".$transaction_time;
-}
+        // Print Transaction Information
+        echo $transaction_status."<br>".$transaction_amount."<br>".$transaction_reference."<br>".$transaction_time;
+    }
 ?>
