@@ -1,4 +1,5 @@
 <?php
+
 //Generate Merchant Unique Transaction ID
 function rand_string($length)
 {
@@ -48,9 +49,7 @@ $fields = array(
     'opt_b' => 'Optional Value B',
     'opt_c' => 'Optional Value C',
     'opt_d' => 'Optional Value D',
-    'signature_key' => 'aamarpay_signature_key'
-
-
+    'signature_key' => 'aamarpay_signature_key',
 );
 
 $domain = $_SERVER["SERVER_NAME"]; // or Manually put your domain name
@@ -94,14 +93,14 @@ if ($code == 200 && !$errors) {
         processRequest($redirect_url_final);
     } else {
         $msg = "Invalid Credential";
-        $obj = new \stdClass;
+        $obj = new \stdClass();
         $obj->error = 'yes';
         $obj->msg = $this->msg;
         return $obj;
     }
 } else {
     $msg = "Please provide a valid information about transaction with transaction id, amount, success url, fail url, cancel url, store id at least";
-    $obj = new \stdClass;
+    $obj = new \stdClass();
     $obj->error = 'yes';
     $obj->msg = $msg;
     return $obj;
@@ -127,4 +126,3 @@ function processRequest($url)
 
     echo $htmlData;
 }
-
